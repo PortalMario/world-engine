@@ -20,7 +20,7 @@ variable "tenant_id" {
  */
 
 variable "virtual_networks" {
-  type  = map
+  type  = any
 }
 
 variable "resource_groups" {

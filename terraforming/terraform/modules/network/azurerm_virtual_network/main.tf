@@ -1,5 +1,5 @@
 locals {
-  resource_groups = flatten([
+  resource_groups_nets = flatten([
     for k1, rg in var.resource_groups : [
       for k2, vn in var.virtual_networks : {
         group = merge({name = "${k1}"}, rg )
@@ -7,7 +7,7 @@ locals {
       }
     ]
   ])
-  virtual_networks = {for obj in local.resource_groups : "${obj.group.name}_${obj.network.name}" => obj}
+  virtual_networks = {for obj in local.resource_groups_nets : "${obj.group.name}_${obj.network.name}" => obj}
 }
 
 resource "azurerm_virtual_network" "virtual_network" {

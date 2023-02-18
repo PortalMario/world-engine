@@ -16,12 +16,22 @@ inputs = {
   tenant_id       = local.tenant_id
 
   virtual_networks = {
-    "world_eninge-net1": {
-      address_space = ["10.0.0.0/24"]
+    "infrastructure": {
+      address_space = ["10.0.0.0/16"]
+      "subnets"       = {
+        "k8s": {
+          address_prefixes = ["10.0.0.0/24"]
+        }
+      }
     }
 
-    "world_engine-net2": {
-      address_space = ["10.0.1.0/24"]
+    "application": {
+      address_space = ["10.1.0.0/16"]
+      "subnets"       = {
+        "minecraft": {
+          address_prefixes = ["10.1.0.0/24"]
+        }
+      }
     }
   }
 }

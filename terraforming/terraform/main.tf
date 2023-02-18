@@ -3,10 +3,12 @@ module "azurerm_resource_group" {
   resource_groups = var.resource_groups
 }
 
-/* module "azurerm_subnet" {
-  source = "./modules"
-  
-} */
+module "azurerm_subnet" {
+  source            = "./modules/network/azurerm_subnet"
+  resource_groups   = var.resource_groups
+  virtual_networks  = var.virtual_networks
+  depends_on = [module.azurerm_virtual_network]
+}
 
 module "azurerm_virtual_network" {
   source           = "./modules/network/azurerm_virtual_network" 
@@ -15,14 +17,8 @@ module "azurerm_virtual_network" {
   depends_on = [module.azurerm_resource_group]
 }
 
+# interface über anzahl der vmserstellen
 
-
-/* output "debug" {
-  value = module.azurerm_virtual_network
+output "debug" {
+  value = module.azurerm_subnet
 }
-output "debug2" {
-  value = module.azurerm_virtual_network
-} */
-/* output "debugfinal" {
-  value = module.azurerm_virtual_network
-} */
