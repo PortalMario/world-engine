@@ -14,4 +14,14 @@ inputs = {
   client_secret   = local.client_secret
   subscription_id = local.subscription_id
   tenant_id       = local.tenant_id
+
+  virtual_networks = {
+    "world_eninge-net1": {
+      address_space = ["10.0.0.0/24"]
+    }
+
+    "world_engine-net2": {
+      address_space = ["10.0.1.0/24"]
+    }
+  }
 }

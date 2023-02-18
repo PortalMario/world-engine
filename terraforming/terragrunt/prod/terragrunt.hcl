@@ -5,8 +5,17 @@ include "root" {
 
 inputs = {
   resource_groups = {
-    "world-engine_test": {
-      location  = "West Europe"
+    "world_engine-EU": {
+      location = "West Europe"
     }
+    "world_engine-US": {
+      location = "eastus"
+    }
+  }
+  linux_virtual_machines = {   
+/*     "world_engine-k8s01" : {
+      admin_username  = "admin"
+      network_interface_ids = 
+    }  */
   }
 }
