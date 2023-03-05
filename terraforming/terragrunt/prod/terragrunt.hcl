@@ -13,9 +13,15 @@ inputs = {
     }
   }
   linux_virtual_machines = {   
-/*     "world_engine-k8s01" : {
-      admin_username  = "admin"
-      network_interface_ids = 
-    }  */
+    "world_engine-k8s01" : {
+      admin_username  = "world-engine"
+      size            = "Standard_F2"
+      virtual_network = "infrastructure"
+      subnet          = "k8s"
+      os_disk         = {
+        caching              = "None"
+        storage_account_type = "Standard_LRS"
+      }
+    } 
   }
 }

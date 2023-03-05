@@ -14,10 +14,10 @@ variable "tenant_id" {
   type = string
 }
 
-/* variable "linux_virtual_machines" {
+variable "linux_virtual_machines" {
   type = any
 }
- */
+
 
 variable "virtual_networks" {
   type  = any

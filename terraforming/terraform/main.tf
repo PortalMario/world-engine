@@ -1,3 +1,13 @@
+# its currently not possible defininy multiple interfaces per vm.
+module "azurerm_network_interface" {
+  source            = "./modules/network/azurerm_network_interface"
+  resource_groups   = var.resource_groups
+  subnet_ids        = module.azurerm_subnet.subnets
+  # One interface per VM.
+  linux_virtual_machines = var.linux_virtual_machines
+  depends_on        = [module.azurerm_subnet]
+}
+
 module "azurerm_resource_group" {
   source          = "./modules/base/azurerm_resource_group"
   resource_groups = var.resource_groups
@@ -7,18 +17,16 @@ module "azurerm_subnet" {
   source            = "./modules/network/azurerm_subnet"
   resource_groups   = var.resource_groups
   virtual_networks  = var.virtual_networks
-  depends_on = [module.azurerm_virtual_network]
+  depends_on        = [module.azurerm_virtual_network]
 }
 
 module "azurerm_virtual_network" {
   source           = "./modules/network/azurerm_virtual_network" 
   resource_groups  = var.resource_groups
   virtual_networks = var.virtual_networks
-  depends_on = [module.azurerm_resource_group]
+  depends_on       = [module.azurerm_resource_group]
 }
 
-# interface über anzahl der vmserstellen
-
-output "debug" {
-  value = module.azurerm_subnet
-}
+/* output "test" {
+  value = module.azurerm_network_interface
+} */

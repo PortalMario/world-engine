@@ -1,3 +1,3 @@
-/* output "debug" {
-  value = local.virtual_networks
-} */
+output "debug3" {
+  value = azurerm_virtual_network.virtual_network
+}

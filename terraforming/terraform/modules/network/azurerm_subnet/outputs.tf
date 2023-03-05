@@ -1,3 +1,3 @@
-output "debug" {
-  value = data.azurerm_subnet.subnet
+output "subnets" {
+  value = azurerm_subnet.subnet
 }

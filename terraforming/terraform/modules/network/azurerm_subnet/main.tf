@@ -21,11 +21,3 @@ resource "azurerm_subnet" "subnet" {
   virtual_network_name  = each.value.network["name"]
   address_prefixes      = each.value.subnets["address_prefixes"]
 }
-
-data "azurerm_subnet" "subnet" {
-  for_each = local.subnets
-
-  name                  = each.value.subnets["name"]
-  resource_group_name   = each.value.group["name"]
-  virtual_network_name  = each.value.network["name"]
-}
