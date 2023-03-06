@@ -16,8 +16,20 @@ inputs = {
     "world_engine-k8s01" : {
       admin_username  = "world-engine"
       size            = "Standard_F2"
-      virtual_network = "infrastructure"
-      subnet          = "k8s"
+      interfaces = {
+        "interface_1": {
+          virtual_network               = "infrastructure"
+          subnet                        = "k8s"
+          private_ip_address_allocation = "Static"
+          private_ip_address            = "10.0.0.10"
+        }
+        "interface_2": {
+          virtual_network               = "infrastructure"
+          subnet                        = "k8s"
+          private_ip_address_allocation = "Static"
+          private_ip_address            = "10.0.0.11" 
+        }
+      }
       os_disk         = {
         caching              = "None"
         storage_account_type = "Standard_LRS"

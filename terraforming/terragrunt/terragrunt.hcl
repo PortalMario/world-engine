@@ -18,7 +18,7 @@ inputs = {
   virtual_networks = {
     "infrastructure": {
       address_space = ["10.0.0.0/16"]
-      "subnets"       = {
+      subnets       = {
         "k8s": {
           address_prefixes = ["10.0.0.0/24"]
         }
@@ -27,7 +27,7 @@ inputs = {
 
     "application": {
       address_space = ["10.1.0.0/16"]
-      "subnets"       = {
+      subnets       = {
         "minecraft": {
           address_prefixes = ["10.1.0.0/24"]
         }
