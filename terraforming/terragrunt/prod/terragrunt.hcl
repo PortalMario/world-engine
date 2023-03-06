@@ -13,9 +13,9 @@ inputs = {
     }
   }
   linux_virtual_machines = {   
-    "world_engine-k8s01" : {
-      admin_username  = "world-engine"
-      size            = "Standard_F2"
+    "world-engine-k8s01" : {
+      admin_username         = "world-engine"
+      size                   = "Standard_F2"
       interfaces = {
         "interface_1": {
           virtual_network               = "infrastructure"
@@ -30,9 +30,15 @@ inputs = {
           private_ip_address            = "10.0.0.11" 
         }
       }
-      os_disk         = {
+      os_disk                = {
         caching              = "None"
         storage_account_type = "Standard_LRS"
+      }
+      source_image_reference = {
+        publisher = "Canonical"
+        offer     = "0001-com-ubuntu-server-jammy"
+        sku       = "22_04-lts"
+        version   = "latest"
       }
     } 
   }

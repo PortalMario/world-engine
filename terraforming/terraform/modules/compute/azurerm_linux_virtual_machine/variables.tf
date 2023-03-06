@@ -1,14 +1,23 @@
 variable "linux_virtual_machines" {
   type = map(
     object({
-      admin_username = string
-      location       = string
-      network_interface_ids = list(string)
-      size                  = string
-      resource_group_name   = string
-      os_disk               = object({
-        caching               = string
-        storage_account_type  = string
+      admin_username         = string
+      size                   = string
+      interfaces             = map(object({
+        virtual_network               = string
+        subnet                        = string
+        private_ip_address_allocation = string
+        private_ip_address            = string
+      }))
+      os_disk                = object({
+        caching              = string
+        storage_account_type = string
+      })
+      source_image_reference = object({
+        publisher = string
+        offer     = string
+        sku       = string
+        version   = string
       })
     })
   )
@@ -20,4 +29,13 @@ variable "resource_groups" {
       location = string
     })
   )
+}
+
+variable "network_interfaces" {
+  type = any
+}
+
+variable "ansible_ssh_key" {
+  type      = string
+  sensitive = true
 }

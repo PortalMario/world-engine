@@ -1,3 +1,3 @@
-output "test" {
-  value = local.network_interface
+output "network_interfaces" {
+  value = azurerm_network_interface.network_interface
 }
