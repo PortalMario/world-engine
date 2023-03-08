@@ -67,3 +67,7 @@ variable "resource_groups" {
     })
   )
 }
+
+variable "dns_zones" {
+  type = any
+}

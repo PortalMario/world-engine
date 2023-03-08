@@ -1,3 +1,19 @@
+module "azurerm_dns_a_record" {
+  source    = "./modules/dns/azurerm_dns_a_record"
+  dns_zones = var.dns_zones
+  depends_on = [
+    module.azurerm_dns_zone,
+  ]
+}
+
+module "azurerm_dns_zone" {
+  source    = "./modules/dns/azurerm_dns_zone"
+  dns_zones = var.dns_zones
+  depends_on = [
+    module.azurerm_resource_group
+  ]
+}
+
 module "azurerm_linux_virtual_machine" {
   source                 = "./modules/compute/azurerm_linux_virtual_machine"
   resource_groups        = var.resource_groups
@@ -34,7 +50,3 @@ module "azurerm_virtual_network" {
   virtual_networks = var.virtual_networks
   depends_on       = [module.azurerm_resource_group]
 }
-
-/* output "debug1" {
-  value = module.azurerm_linux_virtual_machine
-} */
